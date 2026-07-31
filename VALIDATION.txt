@@ -1,0 +1,32 @@
+PEPE Robinhood Instant Launch - GitHub package validation
+=========================================================
+
+Repository safety checks performed in the packaging environment:
+  PASS  node --check launch-pepe.mjs
+  PASS  node --check scripts/secret-scan.mjs
+  PASS  repository secret scan
+  PASS  4 offline Node tests
+  PASS  no .env file included
+  PASS  .env.example PRIVATE_KEY is blank
+  PASS  private environment and key patterns are git-ignored
+  PASS  broadcast requires ALLOW_MAINNET_BROADCAST=YES
+  PASS  broadcast requires interactive DEPLOY PEPE confirmation
+  PASS  final pre-send chain/address/simulation revalidation present
+  PASS  supplied branding artwork and generated repository assets included
+
+Live-chain evidence supplied by the repository owner before GitHub hardening:
+  Chain ID:              4663
+  Complete simulation:  PASS
+  Predicted token:       0x22B8672004b038Cab50c1AcFAA187C9eD4a55FE5
+  Estimated gas:         2700827
+  Transaction sent:      no
+
+Important:
+  The hardened v1.1.0 script adds local-only safety checks around the same
+  transaction construction. Rerun npm install, npm run check, npm run inspect,
+  and npm run simulate locally before broadcasting.
+
+Dependency installation and npm audit were not completed in the packaging
+sandbox because its npm mirror did not contain ethers 6.16.0. The dependency
+is pinned exactly in package.json. A normal local npm install will create
+package-lock.json, after which npm run check and npm audit should be run.
