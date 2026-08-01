@@ -1,17 +1,21 @@
 {
   "name": "pepe-robinhood-instant-launch",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "description": "A guarded one-transaction PEPE Instant Launch for Robinhood Chain using Uniswap V4.",
   "license": "MIT",
   "scripts": {
-    "check": "node --check launch-pepe.mjs && node --check scripts/secret-scan.mjs && npm run secrets && npm test",
+    "check": "node --check launch-pepe.mjs && node --check fees-pepe.mjs && node --check scripts/secret-scan.mjs && npm run secrets && npm test",
     "secrets": "node scripts/secret-scan.mjs",
     "test": "node --test test/*.test.mjs",
     "inspect": "node launch-pepe.mjs --inspect",
     "simulate": "node launch-pepe.mjs --simulate",
-    "launch": "node launch-pepe.mjs --broadcast"
+    "launch": "node launch-pepe.mjs --broadcast",
+    "fees": "node fees-pepe.mjs status",
+    "collect": "node fees-pepe.mjs collect",
+    "claim": "node fees-pepe.mjs claim",
+    "collect-and-claim": "node fees-pepe.mjs collect-and-claim"
   },
   "dependencies": {
     "ethers": "6.16.0"

@@ -161,6 +161,24 @@ The terminal prints and records:
 
 Follow [docs/VERIFY.md](docs/VERIFY.md) to validate the explorer record and pool events.
 
+## Creator fee commands
+
+After a confirmed launch, the deployment JSON supplies the LP/beneficiary token ID automatically:
+
+```powershell
+npm run fees
+npm run collect
+npm run claim
+```
+
+`fees` is read-only. `collect` harvests LP fees into the configured split destinations. `claim` withdraws the creator allocation from BeneficiaryVault to the current beneficiary NFT owner. The combined helper sends two sequential transactions:
+
+```powershell
+npm run collect-and-claim
+```
+
+See [docs/FEES.md](docs/FEES.md) for token-ID recovery, transaction safeguards, and the distinction between unharvested and claimable fees.
+
 ## Important limitations
 
 - This repository does not guarantee Dexscreener, GeckoTerminal, wallet, or exchange indexing.
@@ -182,6 +200,7 @@ Follow [docs/VERIFY.md](docs/VERIFY.md) to validate the explorer record and pool
 ├── test/                    Offline repository safety tests
 ├── .env.example             Public, credential-free configuration template
 ├── launch-pepe.mjs          Inspect, simulate, and broadcast launcher
+├── fees-pepe.mjs            Read, collect, and claim creator fees
 ├── SECURITY.md              Key handling and reporting policy
 └── README.md
 ```
